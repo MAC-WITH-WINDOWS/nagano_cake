@@ -1,59 +1,37 @@
 Rails.application.routes.draw do
+  
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+  
+  devise_for :customers,skip: [:passwords], controllers: {
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
+  }
+  
+  root "public/homes#top"
+  
   namespace :admin do
-    get 'orders/show'
+    resources :orders,only:[:show, :update]
+    resources :customers,only:[:show, :index, :edit, :update]
+    resources :genres,only:[:index, :create, :edit, :update]
+    resources :items,only:[:new, :index, :show, :create, :edit, :update]
+    resources :order_items,only:[:update]
+    root "homes#top"
   end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
+  
   namespace :public do
-    get 'shipping_address/index'
-    get 'shipping_address/edit'
-  end
-  namespace :public do
-    get 'orders/new'
+    resources :shipping_address,only:[:index, :create, :edit, :update,:destroy]
+    resources :orders,only:[:new, :index, :create, :show]
     get 'orders/check'
     get 'orders/finish'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
+    resources :cart_items,only:[:index, :create, :update, :destroy]
+    delete 'cart_items/destroy_all'
+    resources :customers,only:[:show, :edit, :update]
     get 'customers/check'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
+    patch 'customers/out'
+    resources :items,only:[:show, :index]
     get 'homes/about'
   end
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
 
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
