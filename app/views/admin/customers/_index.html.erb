@@ -1,0 +1,23 @@
+<table class='table table-hover table-inverse'style="background-color:gainsboro;">
+  
+  <thead>
+    <tr>
+      <th nowrap>会員ID</th>
+      <th nowrap>氏名</th>
+      <th nowrap>メールアドレス</th>
+      <th nowrap>ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @customers.each do |customer| %>
+      <tr>
+        <td nowrap><%= customer.id %></td>
+        <td><%#= link_to customer.first_name ,admin_customer_path %></td>
+        <td><%= customer.email %></td>
+        <td><%= customer.is_deleted %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
