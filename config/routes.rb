@@ -27,7 +27,8 @@ Rails.application.routes.draw do
     get 'orders/finish'
     resources :cart_items,only:[:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all'
-    resource :customers,only:[:show, :edit, :update]
+    resource :customers,only:[:show, :edit]
+    patch "customers" => "customers#update", as: "customer"
     get 'customers/check'
     patch 'customers/out'
     resources :items,only:[:show, :index]
