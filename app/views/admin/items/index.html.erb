@@ -14,8 +14,9 @@
   </div>
   
   <div class='row ml-5'>
-    <div class='pt-4 ml-3 col-md-2 col-sm-6'>
+    <div class='pt-4 ml-3 col-md-auto'>
       <%= render 'index', item: @item %>
+      <%= paginate @item %>
     </div>
   </div>
 </div>
