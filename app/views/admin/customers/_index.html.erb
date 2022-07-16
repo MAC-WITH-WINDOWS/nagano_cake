@@ -10,11 +10,11 @@
   </thead>
   
   <tbody>
-    <% @customers.each do |customer| %>
+    <% customers.each do |customer| %>
       <tr>
         <td nowrap><%= customer.id %></td>
-        <td><%#= link_to customer.first_name ,admin_customer_path %></td>
-        <td><%= customer.email %></td>
+        <td nowrap><%= link_to customer.full_name,admin_customer_path(customer.id),class: "text-dark"%></td>
+        <td nowrap><%= customer.email %></td>
         <td><%= customer.is_deleted %></td>
       </tr>
     <% end %>
