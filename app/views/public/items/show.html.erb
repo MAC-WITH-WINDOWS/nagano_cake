@@ -1,24 +1,36 @@
 <%= stylesheet_link_tag "application", :media => "all" %>
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-2"></div><!--ジャンル検索欄(部分テンプレート挿入部分)!-->
-    <div class="col-md-10"><!--以下商品詳細部分!-->
+    <div class="col-md-2"><!--ジャンル検索欄(部分テンプレート挿入部分)--></div>
+    <div class="col-md-10 d-flex"><!--以下商品詳細部分!-->
+                    <!--以下デモ部分-->
+      <div class="item-image">
+          <%= image_tag'no-image.jpg' %>
+      </div>
+      <div class="item-text">
+          <p>商品タイトルデモ</p>
+          <p>商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ</p>
+          <p>¥値段デモ</p>
+          <%=form_with model:@item do |f| %>             <!--@item、nameは全くの出鱈目。機能の確認のため-->
+          <%=f.select :name,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択"  %>
+          <%end%>
+      </div>
+      <!--ここまでデモ部分-->
+<%
+=begin%>
+          #admin商品追加待ち
 
-    <div class="image">
-    <%= image_tag'no-image.jpg' %>
-    </div>
-    <p>商品タイトルデモ</p>
-    <p>商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ</p>
-    <p>¥値段デモ</p>
-    <%=form_with model:@item do |f| %>
-    <%=f.select ,[["1","1"],["2","2"],["3","3"]] %>
-    <%end%>
+      <div><%= image_tag items.get_image %> </div>#動作確認できず、エラーの可能性もあり。get_imageはitemモデルでの定義。変更の可能性大
+      <div>
+          <%= items.name %>
+          ¥<%= items.tax_free_price %>
 
-    <!--admin商品追加待ち
-    <%= image_tag items.get_image %>$動作確認できず、エラーの可能性もあり。get_imageはitemモデルでの定義。変更の可能性大
-      <%= items.name %>
-      <%= items.tax_free_price %>
-      !-->
+          <%=form_with model:XXX do |f| %>
+          <%=f.select :XXX,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択" %>         #カート機能未作成のためXXX記述
+          <%end%>
+      </div>
+  <%
+=end%>
 
 
     </div>
