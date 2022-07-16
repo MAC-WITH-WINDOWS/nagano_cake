@@ -1,11 +1,95 @@
+<%= stylesheet_link_tag "application", :media => "all" %>
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-2"></div><!--ジャンル検索欄(部分テンプレート挿入部分)!-->
     <div class="col-md-10"><!--以下商品一覧部分!-->
       <h1 style="display:inline;"><strong>商品一覧</h1>(全<%=@items.count%>件)</strong>
-      <%= @items.each do |items| %>
-      
+                            <!--以下デモ部分-->
+      <div class="grid">
+        <div class="item-demo">
+           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
+           <p>商品名デモ</p>
+           <p>金額デモ</p>
+        </div>
+        <div class="item-demo">
+           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
+           <p>商品名デモ</p>
+           <p>金額デモ</p>
+        </div>
+        <div class="item-demo">
+           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
+           <p>商品名デモ</p>
+           <p>金額デモ</p>
+        </div>
+        <div class="item-demo">
+           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
+           <p>商品名デモ</p>
+           <p>金額デモ</p>
+        </div>
+        <div class="item-demo">
+           <div class="image-demo"><%= image_tag 'no-image.jpg' %></div>
+           <p>商品名デモ</p>
+           <p>金額デモ</p>
+        </div>
+      </div>
+      <!--デモここまで-->
+    
+
+         <!--admin商品追加待ち
+      <div class="grid">
+        <%= @items.each do |items| %>
+          <%= image_tag items.get_image.variant( resize:"100×100^") %> #画像サイズは適当です。動作確認できず、エラーの可能性もあり。get_imageはitemモデルでの定義。変更の可能性大
+          <% link_to item_path(items) do %><%= items.name %><% end %>
+          <%= items.tax_free_price %>
+        <% end %>
+      </div>
+      !-->
 
     </div>
   </div>
+</div>
+<%= paginate @items %>
+
+
+
+
+<!--以下商品詳細ページ　商品ナシにより一時的にこちらで詳細ページ(showページ)作成中-->
+
+
+
+
+<%= stylesheet_link_tag "application", :media => "all" %>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2"></div><!--ジャンル検索欄(部分テンプレート挿入部分)-->
+    <div class="col-md-10 d-flex"><!--以下商品詳細部分!-->
+
+<%
+=begin%>以下デモ部分
+      <div class="item-image">
+      <%= image_tag'no-image.jpg' %>
+      </div>
+      <div class="item-text">
+      <p>商品タイトルデモ</p>
+      <p>商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ</p>
+      <p>¥値段デモ</p>
+      <%=form_with model:@item do |f| %>
+      <%=f.select :name,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択"  %>
+      <%end%>
+      </div>
+      ここまでデモ部分
+<%
+=end%>
+<%
+=begin%>
+          #admin商品追加待ち
+    <%= image_tag items.get_image %>#動作確認できず、エラーの可能性もあり。get_imageはitemモデルでの定義。変更の可能性大
+      <%= items.name %>
+      <%= items.tax_free_price %>
+  <%
+=end%>
+
+
+    </div>
+    </div>
 </div>
