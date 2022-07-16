@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
-  
+
   devise_for :customers,skip: [:passwords], controllers: {
    registrations: "public/registrations",
    sessions: 'public/sessions'
   }
-  
+
   root "public/homes#top"
-  
+
   namespace :admin do
     resources :orders,only:[:show, :update]
     resources :customers,only:[:show, :index, :edit, :update]
@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :order_items,only:[:update]
     root "homes#top"
   end
-  
+
   namespace :public do
     resources :shipping_address,only:[:index, :create, :edit, :update,:destroy]
     resources :orders,only:[:new, :index, :create, :show]
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get 'orders/finish'
     resources :cart_items,only:[:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all'
-    resources :customers,only:[:show, :edit, :update]
+    resource :customers,only:[:show, :edit, :update]
     get 'customers/check'
     patch 'customers/out'
     resources :items,only:[:show, :index]
