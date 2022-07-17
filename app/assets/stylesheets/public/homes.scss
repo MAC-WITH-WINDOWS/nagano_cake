@@ -1,3 +1,15 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mainvisual {
+  height: 300px;
+  width: 100% ;
+  background-image: image-url('mv.jpg');
+  background-size: cover;
+}
+
+.mainvisual-text {
+  background-color: #ffffff99;
+  padding-top: 15px;
+}
