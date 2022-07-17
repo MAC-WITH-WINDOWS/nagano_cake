@@ -3,8 +3,6 @@
   <div class="row">
     <div class="col-md-2"><%= render "public/homes/genre", genres: Genre.all %></div>
     <div class="col-md-10 d-flex">
-
-
       <div><%= image_tag @item.get_image(200,300) %> </div>
       <div>
           <h3><%= @item.name %></h3>
