@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    resources :shipping_addresses,only:[:index, :create, :edit, :update,:destroy]
+    resources :shipping_address,only:[:index, :create, :edit, :update,:destroy]
     resources :orders,only:[:new, :index, :create, :show]
     get 'orders/check'
     get 'orders/finish'
