@@ -29,7 +29,7 @@
                 <%= item.name %>
               <% end %>
             </div>
-            <div class="card-text"><%= item.tax_free_price.to_s(:delimited)%> 円 (税込)</div>
+            <div class="card-text"><%= (item.tax_free_price * 1.1).floor.to_s(:delimited) %> 円 (税込)</div>
           </div>
           <% end %>
         </div>
