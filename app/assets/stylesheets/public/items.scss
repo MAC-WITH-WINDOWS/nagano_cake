@@ -1,4 +1,13 @@
 // Place all the styles related to the public/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.grid{
+  display:grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  gap: 5%;
+}
+
+.item-demo{
+  border: 3px solid black;
+}
 
