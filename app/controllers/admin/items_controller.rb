@@ -1,12 +1,12 @@
 class Admin::ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
-
-  def new
-    @item = Item.new
-    @genres = Genre.all
-  end
+    def index
+      @items = Item.all
+      @items = Item.page(params[:page])
+    end
+    
+    def new
+    end
+    
 
   def show
     @item = Item.find_by(params[:id])
@@ -35,4 +35,5 @@ class Admin::ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :introduction, :genre_id, :tax_free_price, :sales_status)
   end
+
 end

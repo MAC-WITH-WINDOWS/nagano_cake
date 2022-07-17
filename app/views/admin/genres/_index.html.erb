@@ -1,0 +1,19 @@
+<table class='table table-hover table-striped table-inverse'style="background-color:gainsboro;">
+  
+  <thead>
+    <tr>
+      <th nowrap>ジャンル</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% genres.each do |genre| %>
+      <tr>
+        <td nowrap><%= genre.name %></td>
+        <td nowrap><%= link_to "編集する",edit_admin_genre_path(genre.id),class: "btn btn-success text-white ml-5"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>
