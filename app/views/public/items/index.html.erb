@@ -4,49 +4,21 @@
     <div class="col-md-2"><!--ジャンル検索欄(部分テンプレート挿入部分)!--></div>
     <div class="col-md-10"><!--以下商品一覧部分!-->
       <h1 style="display:inline;"><strong>商品一覧</h1>(全<%=@items.count%>件)</strong>
-                            <!--以下デモ部分-->
-      <div class="grid">
-        <div class="item-demo">
-           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
-           <p>商品名デモ</p>
-           <p>金額デモ</p>
-        </div>
-        <div class="item-demo">
-           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
-           <p>商品名デモ</p>
-           <p>金額デモ</p>
-        </div>
-        <div class="item-demo">
-           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
-           <p>商品名デモ</p>
-           <p>金額デモ</p>
-        </div>
-        <div class="item-demo">
-           <div class="image-demo"><%= image_tag'no-image.jpg' %></div>
-           <p>商品名デモ</p>
-           <p>金額デモ</p>
-        </div>
-        <div class="item-demo">
-           <div class="image-demo"><%= image_tag 'no-image.jpg' %></div>
-           <p>商品名デモ</p>
-           <p>金額デモ</p>
-        </div>
-      </div>
-      <!--デモここまで-->
+                           
 
-<%
-=begin%>
-         <!--admin商品追加待ち
+
+
       <div class="grid">
-        <%= @items.each do |items| %>
-          <%= image_tag items.get_image.variant( resize:"100×100^") %> #画像サイズは適当です。動作確認できず、エラーの可能性もあり。get_imageはitemモデルでの定義。変更の可能性大
-          <% link_to item_path(items) do %><%= items.name %><% end %>
+        <% @items.each do |items| %>
+        <div>
+          <%= image_tag items.get_image(100,100) %><br>
+          <%= link_to public_item_path(items) do %><%= items.name %><% end %><br>
           <%= items.tax_free_price %>
+        </div>
         <% end %>
       </div>
-      !-->
-<%
-=end%>
+
+
 
     </div>
   </div>

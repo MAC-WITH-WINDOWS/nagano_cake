@@ -3,15 +3,15 @@ class Admin::ItemsController < ApplicationController
       @items = Item.all
       @items = Item.page(params[:page])
     end
-    
+
     def new
       @item = Item.new
       @genres = Genre.all
     end
-    
+
 
   def show
-    @item = Item.find_by(params[:id])
+    @item = Item.find(params[:id])
     @genre = @item.genre
   end
 

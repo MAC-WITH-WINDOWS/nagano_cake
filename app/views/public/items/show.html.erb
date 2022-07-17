@@ -11,10 +11,13 @@
           <p>商品タイトルデモ</p>
           <p>商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ</p>
           <p>¥値段デモ</p>
-          <%=form_with model:@item do |f| %>             <!--@item、nameは全くの出鱈目。機能の確認のため-->
-          <%=f.select :name,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択"  %>
+
+          <%=form_with model: [:public, CartItem.new], method: :post do |f| %>
+          <%=f.select :amount,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択"  %>
           <%end%>
       </div>
+
+
       <!--ここまでデモ部分-->
 <%
 =begin%>
@@ -24,7 +27,6 @@
       <div>
           <%= items.name %>
           ¥<%= items.tax_free_price %>
-
           <%=form_with model:XXX do |f| %>
           <%=f.select :XXX,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択" %>         #カート機能未作成のためXXX記述
           <%end%>
