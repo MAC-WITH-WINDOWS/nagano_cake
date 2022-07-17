@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:peyment_method, :post_code, :address, :name)
+    params.require(:order).permit(:peyment_method, :post_code, :address, :to_name)
   end
   
 end
