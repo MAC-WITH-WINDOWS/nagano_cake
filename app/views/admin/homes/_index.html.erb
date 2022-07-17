@@ -13,9 +13,21 @@
     <% @orders.each do |order| %>
       <tr>
         <td nowrap><%= link_to order.created_at ,admin_order_path %></td>
-        <td><%= customers.last_name.first_name %></td>
+        <td><%= customer.full_name %></td>
         <td><%= order_items.amount %></td>
-        <td><%= order.order_status %></td>
+        <td nowrap>
+        <% if order.order_status == "入金待ち" %>
+            <span class="text-dark"><strong>入金待ち</strong></span>
+        <% elsif order.order_status == "入金確認" %>
+            <span class="text-dark"><strong>入金確認</strong></span>
+        <% elsif order.order_status == "制作中" %>
+            <span class="text-dark"><strong>制作中</strong></span>
+        <% elsif order.order_status == "発送準備中" %>
+            <span class="text-dark"><strong>発送準備中</strong></span>
+        <% else  order.order_status == "発送済み" %>
+            <span class="text-dark"><strong>発送済み</strong></span>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

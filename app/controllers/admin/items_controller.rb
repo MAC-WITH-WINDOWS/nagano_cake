@@ -10,7 +10,6 @@ class Admin::ItemsController < ApplicationController
 
     end
 
-
     def show
       @item = Item.find(params[:id])
       @genre = @item.genre
@@ -38,6 +37,5 @@ class Admin::ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:image, :name, :introduction, :genre_id, :tax_free_price, :sales_status)
     end
-    
 
 end
