@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
+    @customer=current_customer
+    @adress=ShippingAddress.where(customer_id:current_customer.id)
   end
 
   def check
@@ -18,11 +20,11 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   private
-  
+
   def order_params
     params.require(:order).permit(:peyment_method, :post_code, :address, :to_name)
   end
-  
+
 end
