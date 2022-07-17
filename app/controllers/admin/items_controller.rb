@@ -7,6 +7,7 @@ class Admin::ItemsController < ApplicationController
     def new
       @item = Item.new
       @genres = Genre.all
+
     end
 
 
@@ -37,5 +38,6 @@ class Admin::ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:image, :name, :introduction, :genre_id, :tax_free_price, :sales_status)
     end
+    
 
 end
