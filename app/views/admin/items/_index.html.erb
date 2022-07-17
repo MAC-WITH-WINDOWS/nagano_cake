@@ -17,7 +17,13 @@
         <td nowrap><u><%= link_to item.name ,admin_item_path(item.id), class: "text-dark"  %></u></td>
         <td><%= item.tax_free_price %></td>
         <td nowrap><%= item.genre.name %></td>
-        <td><%= item.sales_status %></td>
+        <td nowrap>
+        <% if item.sales_status == false %>
+            <span class="text-success"><strong>販売中</strong></span>
+        <% else %>
+            <span class="text-secondary"><strong>販売停止中</strong></span>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
