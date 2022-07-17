@@ -1,0 +1,27 @@
+<table class='table table-hover table-striped table-inverse'style="background-color:gainsboro;">
+
+  <thead>
+    <tr>
+      <th nowrap>商品名</th>
+      <th nowrap>単価(税込)</th>
+      <th nowrap>数量</th>
+      <th nowrap>小計</th>
+      <th nowrap>製作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td nowrap><%= item.name  %></td>
+        <td nowrap><%= order_item.purchace_price  %></td>
+        <td><%= order_item.amount %></td>
+        <td nowrap><%= order_item.sum_of_price %></td>
+        <td nowrap><%= order_item.making_status %></td>
+        <td><%= link_to "更新",admin_order_path(order.id) ,method: :post ,class:"btn btn-success" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

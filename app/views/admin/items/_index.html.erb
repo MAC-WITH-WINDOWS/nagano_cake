@@ -1,12 +1,11 @@
-<table class='table table-hover table-inverse'style="background-color:gainsboro;">
-  
+<table class='table table-hover table-striped table-inverse'style="background-color:gainsboro;">
+
   <thead>
     <tr>
       <th nowrap>商品ID</th>
       <th nowrap>商品名</th>
       <th nowrap>税抜価格</th>
       <th nowrap>ジャンル</th>
-      <!--<th colspan = "5"></th>-->
       <th nowrap >ステータス</th>
     </tr>
   </thead>
@@ -15,9 +14,9 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.id  %></td>
-        <td nowrap><%= link_to item.name ,admin_item_path  %></td>
+        <td nowrap><u><%= link_to item.name ,admin_item_path(item.id), class: "text-dark"  %></u></td>
         <td><%= item.tax_free_price %></td>
-        <td nowrap><%= item.genre %></td>
+        <td nowrap><%= item.genre.name %></td>
         <td><%= item.sales_status %></td>
       </tr>
     <% end %>
