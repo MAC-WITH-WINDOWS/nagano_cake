@@ -12,7 +12,7 @@
           <p>商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ商品説明デモ</p>
           <p>¥値段デモ</p>
 
-          <%=form_with model: [:public, CartItem.new], method: :post do |f| %>
+          <%=form_with model: [:public, CartItem], method: :post do |f| %>
           <%=f.select :amount,[["1","1"],["2","2"],["3","3"]],include_blank: "個数選択"  %>
           <%end%>
       </div>

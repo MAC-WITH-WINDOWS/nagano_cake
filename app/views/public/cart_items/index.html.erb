@@ -12,6 +12,8 @@
         <th>小計</th>
         <th></th>
       </tr>
+      <% @cart_items.each do |item| %>
+      <td><%= item.name %></td>
     </table>
   </div>
 
