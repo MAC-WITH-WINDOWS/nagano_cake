@@ -12,13 +12,13 @@ class Public::CartItemsController < ApplicationController
   end
 
   def update
-    cart_item=CartItem.find(params[:id])
-    cart_item.update(cart_params)
+    @cart_item=CartItem.find(params[:id])
+    @cart_item.update(cart_params)
     redirect_to public_cart_items_path
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.find(params[:id])
     cart_item.destroy
     redirect_to public_cart_items_path
   end
