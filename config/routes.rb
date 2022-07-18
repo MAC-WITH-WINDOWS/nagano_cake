@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :shipping_addresses,only:[:index, :create, :edit, :update,:destroy]
     resources :orders,only:[:new, :index, :create, :show]
-    get 'orders/check'
+    post 'orders/check'
     get 'orders/finish'
     delete 'cart_items/destroy_all'
     resources :cart_items,only:[:index, :create, :update, :destroy]

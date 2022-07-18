@@ -14,7 +14,7 @@
         <tbody>
           <% @cart_items.each do |cart_item| %>
             <tr>
-              <td><%= image_tag cart_item.item.get_iamge(50,50) %> <%= cart_item.item.name %></td>
+              <td><%= image_tag cart_item.item.get_image(50,50) %> <%= cart_item.item.name %></td>
               <td><%= (cart_item.item.tax_free_price * 1.1).floor.to_s(:delimited) %></td>
               <td><%= cart_item.amount %></td>
               <td><%= ((cart_item.item.tax_free_price * 1.1).floor * (cart_item.amount)).to_s(:delimited) %></td>
@@ -43,15 +43,19 @@
   </div>
   <div class="row">
     <div>
-      <span><strong>支払方法</strong></span><%= @order.payment_method %>
-    </div>
-    <div>
-      <span><strong>お届け先</strong></span>〒<%= @order.post_code %> <%= @order.address %> <%= @order.to_name %>
+      <strong>支払方法</strong><%= @order.payment_method %>
     </div>
   </div>
-  
-  
-  <!--以下入力フォームでhidden_fieldを使って全部の情報を送るとできると思う-->
-  <%= render "public/orders/hidden_field", order: @order  %>
+  <div class="row">
+    <div>
+      <span><strong>お届け先</strong></span><%= @order.ship_address %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="w-100">
+  <!--以下入力フォームでhidden_fieldを使って全部の情報を送るとできると思う-->
+  <%= render "public/orders/hidden_form", order: @order  %>
+  </div>
+  </div>
 </div>
