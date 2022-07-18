@@ -9,17 +9,17 @@
       <%= f.label :payment_method,"クレジットカード", value:0 %><br>
       <%= f.radio_button :payment_method,"1" %>
       <%= f.label :payment_method,"銀行振込",value:1 %>
-    <% end %>
 
     <p>お届け先</p>
-    <%= form_with model: [:public,Order.new], method: :post do |f| %>
       <%= f.radio_button :address_update,"0" %>
       <%= f.label :address_update,"ご自身の住所", value:0 %><br>
       <%=@customer.post_code + @customer.address + @customer.first_name + @customer.last_name %>
 
       <%= f.radio_button :address_update,"0" %>
-      <%= f.label :address_update,"登録済み住所から選択", value:0 %><br>
-      <%= form_with model: [:public, Order.new], method: :post do |f| %>
+      <%= f.label :address_update,"登録済み住所から選択,しないでください", value:0 %><br>
+      <%= f.submit "注文を確定する",class:"btn" %>
+      <% end %>
+
 <%
 =begin%>
         -<%= f.hidden_field :post_code, :value  => @address.post_code %>   post_codeにsipping_addresのpopst_codeを入れようとしましたがうまくいっていません。エラーがでます。
