@@ -21,6 +21,12 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+  def create
+    order=Order.new
+    order.save(order_params)
+    redirect_to public_items_path
+  end
+
   private
 
   def order_params
