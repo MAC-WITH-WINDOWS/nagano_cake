@@ -34,24 +34,23 @@
         
       <div class='container mt-4 px-5 px-sm-0 '>
         <div class='row'>
-          <%= render 'index', order_item: @order_item %>
+          <div class="mt-2 col-8"><%= render 'index', order_item: @order_item %></div>
+            <div class="position-relative col-3">
+               <div class="position-absolute bottom-0 end-0">
+                <div class="mt-2 col-3"style="font-weight: bolder;">商品合計</div>
+                <div class="mt-2 col-3"><%= 12345.to_s(:delimited) %><%#= @order_items_price.round.to_s(:delimited) %>円</div>
+                <div class="mt-2 col-3"style="font-weight: bolder;">送料</div>
+                <div class="mt-2 col-3">800<%#= @order.postage %>円</div>
+                <div class="mt-2 col-3">請求合計金額</div>
+                <div class="mt-2 col-3"><%= 12345.to_s(:delimited) %><%#= @total.to_s(:delimited) %>円</div>
+               </div>
+              </div>
+          </div>
         </div>
       </div>
+
         
-      <div class="container mt-5" style="font-size: 20px;">
-        <div class="row">
-          <div class="mt-2 col-3"style="font-weight: bolder;">商品合計</div>
-          <div class="mt-2 col-3"><%= 12345.to_s(:delimited) %><%#= @order_items_price.round.to_s(:delimited) %>円</div>
-        </div>
-        <div class="row">
-          <div class="mt-2 col-3"style="font-weight: bolder;">送料</div>
-          <div class="mt-2 col-3">800<%#= @order.postage %>円</div>
-        </div>
-        <div class="row" style="font-weight: bolder;">
-          <div class="mt-2 col-3">請求合計金額</div>
-          <div class="mt-2 col-3"><%= 12345.to_s(:delimited) %><%#= @total.to_s(:delimited) %>円</div>
-        </div>
-      </div>
+      
       
     </div>
   </div>
