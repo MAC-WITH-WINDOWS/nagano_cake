@@ -29,11 +29,6 @@ class Order < ApplicationRecord
     "〒 #{post_code} #{address} #{to_name}"
   end
 
-
-  # enum order_status: {
-  #   "入金待ち":0, "入金確認":1, "製作中":2, "発送準備中":3, "発送済":4
-  # }
-
   enum order_status: {
     wait_deposit: 0, payment_confirm: 1, production: 2, ship_preparation: 3, ship_completion: 4
   }
