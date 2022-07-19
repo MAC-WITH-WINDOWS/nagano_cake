@@ -4,32 +4,23 @@
 
     <h4 class="mt-5">注文情報入力</h4>
     <p>支払い方法</p>
-    <%= form_with model: [:public,Order.new], method: :post do |f| %>
-      <%= f.radio_button :payment_method,"0" %>
+    <%= form_with model: [:public,Order.new], url: public_orders_check_path, method: :post do |f| %>
+      <%= f.radio_button :payment_method,0 %>
       <%= f.label :payment_method,"クレジットカード", value:0 %><br>
-      <%= f.radio_button :payment_method,"1" %>
+      <%= f.radio_button :payment_method,1 %>
       <%= f.label :payment_method,"銀行振込",value:1 %>
-    <% end %>
 
     <p>お届け先</p>
-    <%= form_with model: [:public,Order.new], method: :post do |f| %>
-      <%= f.radio_button :address_update,"0" %>
-      <%= f.label :address_update,"ご自身の住所", value:0 %><br>
-      <%=@customer.post_code + @customer.address + @customer.first_name + @customer.last_name %>
+      <%= f.radio_button :select_address,0 %>
+      <%= f.label :select_address,"ご自身の住所", value:0 %>
+      <%=@customer.post_code + @customer.address + @customer.first_name + @customer.last_name %><br>
 
-      <%= f.radio_button :address_update,"0" %>
-      <%= f.label :address_update,"登録済み住所から選択", value:0 %><br>
-      <%= form_with model: [:public, Order.new], method: :post do |f| %>
-<%
-=begin%>
-        -<%= f.hidden_field :post_code, :value  => @address.post_code %>   post_codeにsipping_addresのpopst_codeを入れようとしましたがうまくいっていません。エラーがでます。
-<%=
-end%>
+      <%= f.radio_button :select_address,1 %>
+      <%= f.label :select_address,"登録済み住所から選択", value:1 %>
+      <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :ship_address) %><br>
 
-      <%end%>
-
-
-    <%end%>
+      <%= f.submit "確認画面へ進む", url: public_orders_check_path, method: :post ,class:"btn" %>
+      <% end %>
 
 
 

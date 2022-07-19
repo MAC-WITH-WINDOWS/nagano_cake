@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_082451) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
-    t.integer "amount", null: falseshi
+    t.integer "amount", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2022_07_16_082451) do
     t.integer "postage", null: false
     t.integer "total_payment", null: false
     t.integer "payment_method", null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
   end
 
   create_table "shipping_addresses", force: :cascade do |t|
