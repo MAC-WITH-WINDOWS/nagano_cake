@@ -23,10 +23,11 @@ class Order < ApplicationRecord
   def sum_of_price
     order_item.purchace_price * order_item.amount
   end
-  
+
 
   def ship_address
-    "#{〒} #{post_code} #{address} #{to_name}"
+    "〒 #{post_code} #{address} #{to_name}"
+  end
 
 
   enum order_status: {
@@ -36,5 +37,6 @@ class Order < ApplicationRecord
   enum payment_method: {
     "クレジットカード":"0", "銀行振込":"1"
   }
+
 
 end
