@@ -26,7 +26,8 @@ class Order < ApplicationRecord
   
 
   def ship_address
-    "#{〒} #{post_code} #{address} #{to_name}"
+    "〒 #{post_code} #{address} #{to_name}"
+  end
 
 
   enum order_status: {

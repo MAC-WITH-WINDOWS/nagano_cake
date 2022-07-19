@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     patch "customers" => "customers#update", as: "customer"
     get 'customers/check'
     patch 'customers/out'
+    get 'items/search'
     resources :items,only:[:show, :index]
     get 'homes/about'
   end
