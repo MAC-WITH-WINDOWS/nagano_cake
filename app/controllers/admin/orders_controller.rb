@@ -2,7 +2,6 @@ class Admin::OrdersController < ApplicationController
   def show
     
     @order = Order.find(params[:id])
-    
     @order_items = OrderItem.all
     #@order_item = OrderItem.where(order_id: params[:id])
   end
