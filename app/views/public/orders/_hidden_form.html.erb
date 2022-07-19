@@ -6,10 +6,10 @@
     <%= f.hidden_field :total_payment, :value => @total_price %>
     <%= f.hidden_field :payment_method, :value => order.payment_method %>
     <%= f.hidden_field :customer_id, :value => current_customer.id %>
-
     <div style="margin:auto 50%">
       <%= f.submit "注文を確定する", class:"btn btn-success" %>
     </div>
   <% end %>
+
 
 
