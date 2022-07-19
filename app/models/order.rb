@@ -30,12 +30,16 @@ class Order < ApplicationRecord
   end
 
 
+  # enum order_status: {
+  #   "入金待ち":0, "入金確認":1, "製作中":2, "発送準備中":3, "発送済":4
+  # }
+
   enum order_status: {
-     "入金待ち":0, "入金確認":1, "製作中":2, "発送準備中":3, "発送済":4
+    wait_deposit: 0, payment_confirm: 1, production: 2, ship_preparation: 3, ship_completion: 4
   }
 
   enum payment_method: {
-    "クレジットカード":"0", "銀行振込":"1"
+    "クレジットカード":0, "銀行振込":1
   }
 
 end
