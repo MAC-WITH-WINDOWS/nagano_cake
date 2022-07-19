@@ -13,4 +13,5 @@ class OrderItem < ApplicationRecord
     end
     array.sum
   end
+  
 end

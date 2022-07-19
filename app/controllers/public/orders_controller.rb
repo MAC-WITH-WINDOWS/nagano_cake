@@ -16,10 +16,10 @@ class Public::OrdersController < ApplicationController
       @order.to_name = current_customer.first_name + current_customer.last_name
     # 登録済みの住所の場合、配送先を呼び出してその情報を格納する
     elsif @adress == "1"
-      @address = Address.find(params[:order][:address_id])
+      @address = ShippingAddress.find(params[:order][:address_id])
       @order.post_code = @address.post_code
       @order.address = @address.address
-      @order.to_name = @address.to_name
+      @order.to_name = @address.name
     end
     @cart_items = CartItem.where(customer_id: current_customer.id)
     #@cart_items = current_customer.carts_items
@@ -31,7 +31,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @order=Order.all
+    @order=Order.where(customer_id: current_customer.id)
+    @item=OrderItem.all
   end
 
   def show
@@ -39,8 +40,20 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order=Order.new(order_params)
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @order.save
-    redirect_to public_orders_finish_path
+    @cart_items.each do |cart|
+      #binding.pry
+      order_item= OrderItem.new
+      order_item.item_id = cart.item_id
+      order_item.order_id = @order.id
+      order_item.amount = cart.amount
+      order_item.purchace_price = cart.item.tax_free_price
+      order_item.making_status = 0
+      order_item.save
+    end
+    @cart_items.destroy_all
+    redirect_to "/public/orders/finish"
   end
 
   private
