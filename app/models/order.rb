@@ -18,13 +18,10 @@ class Order < ApplicationRecord
     end
     # 新しい住所は入力した値がそのまま格納される
   end
-
-
-  def sum_of_price
-    order_item.purchace_price * order_item.amount
+  
+  def total_price
+    total_payment + 800
   end
-
-
 
   def ship_address
     "〒 #{post_code} #{address} #{to_name}"

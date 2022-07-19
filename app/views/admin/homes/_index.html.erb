@@ -14,10 +14,14 @@
       <tr>
         <td nowrap><u><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S") ,admin_order_path(order.id),class: "text-dark" %></u></td>
         <td nowrap><%= order.customer.full_name %></td>
-        <td nowrap><%#= order.order_items.amount %></td>
         <td nowrap>
-          <%= order.order_status_i18n %>
+          <% order.order_items.each do |ord_item|%>
+          <%#= OrderItem.where(id: ord_item.order.id).pluck(:amount).join %>
+          <%= (ord_item.amount).count %>
+          
+          <% end %>
         </td>
+        <td nowrap><%= order.order_status_i18n %></td>
       </tr>
     <% end %>
   </tbody>

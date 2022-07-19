@@ -1,14 +1,13 @@
 class Admin::OrdersController < ApplicationController
   def show
-
     @order = Order.find(params[:id])
-    @order_items = OrderItem.all
-    # @order_items = OrderItem.where(order_id: params[:id])
+    @order_items = OrderItem.where(order_id: params[:id])
   end
 
   def update
       @order = Order.find(params[:id])
       @order.update(order_params)
+      flash[:notice] = "注文ステータスが更新されました"
       redirect_to request.referrer
   end
 
