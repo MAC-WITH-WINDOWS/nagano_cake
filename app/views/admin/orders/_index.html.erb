@@ -14,14 +14,14 @@
   <% @order_items.each do |order_item| %>
     <tbody>
       <tr>
-        <td nowrap><%= order_item.name  %></td>
+        <td nowrap><%= order_item.item.name  %></td>
         <td nowrap><%= order_item.purchace_price.to_s(:delimited) %></td>
         <td nowrap><%= order_item.amount %></td>
         <td nowrap><%= order_item.sum_of_price.to_s(:delimited) %></td>
-        <%= form_with model: @order_item, url: admin_order_item_path, method: :patch, local: true do |f| %>
+        <%= form_with model: @order_item, url: admin_order_item_path(order_item.id), method: :patch, local: true do |f| %>
         <td nowrap><%= f.select :maiking_status, OrderItem.maiking_statuses.keys, class: "maiking_status" %></td>
+        <td><%= f.submit "更新",class:"btn btn-success" %></td>
         <% end %>
-        <td><%= link_to "更新",admin_order_path(order.id) ,method: :post ,class:"btn btn-success" %></td>
       </tr>
     </tbody>
   <% end %>
