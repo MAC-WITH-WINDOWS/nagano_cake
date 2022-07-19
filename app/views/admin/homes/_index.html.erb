@@ -12,9 +12,9 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td nowrap><%= link_to order.created_at ,admin_order_path %></td>
-        <td><%= order.full_name %></td>
-        <td><%= order_items.amount %></td>
+        <td nowrap><u><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S") ,admin_order_path(order.id),class: "text-dark" %></u></td>
+        <td nowrap><%= order.customer.full_name %></td>
+        <td nowrap><%#= order.order_items.amount %></td>
         <td nowrap>
         <% if order.order_status == "入金待ち" %>
             <span class="text-dark"><strong>入金待ち</strong></span>
