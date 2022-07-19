@@ -6,11 +6,11 @@
     <h3 class="col-2">登録情報</h3>
     <%= link_to "編集する", edit_public_customers_path, class:"btn btn-success" %>
   </div>
-  <table class="table table-bordered">
+  <table class="table table-bordered mt-3 col-8">
     <tr>
-      <th class="table-secondary">氏名</th>
+      <th class="table-secondary col-3">氏名</th>
       <td>
-        <%= @customer.last_name %> <%= @customer.first_name %>
+        <%= @customer.full_name %>
       </td>
     </tr>
     <tr>
@@ -22,7 +22,7 @@
     <tr>
       <th class="table-secondary">郵便番号</th>
       <td>
-        <%= @customer.post_code %>
+        <%= @customer.post_code.to_s.insert(3, "-") %>
       </td>
     </tr>
     <tr>
@@ -34,7 +34,7 @@
     <tr>
       <th class="table-secondary">電話番号</th>
       <td>
-        <%= @customer.phone_number %>
+        <%= @customer.phone_number.to_s.insert(3, "-").insert(8, "-") %>
       </td>
     </tr>
     <tr>
@@ -48,7 +48,7 @@
     <h3 class="col-2">配送先</h3>
     <%= link_to "一覧を見る", public_shipping_addresses_path, class:"btn btn-primary" %>
   </div>
-  <div class="row">
+  <div class="row mt-3">
     <h3 class="col-2">注文履歴</h3>
     <%= link_to "一覧を見る", public_orders_path, class:"btn btn-primary" %>
   </div>

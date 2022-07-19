@@ -25,6 +25,7 @@ class Order < ApplicationRecord
   end
 
 
+
   def ship_address
     "〒 #{post_code} #{address} #{to_name}"
   end
