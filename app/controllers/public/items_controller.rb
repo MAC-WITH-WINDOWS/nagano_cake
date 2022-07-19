@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items=Item.all.page
+    sale_items = Item.where(sales_status: 0)
+    @items = sale_items.page
   end
 
   def show
@@ -9,7 +10,9 @@ class Public::ItemsController < ApplicationController
   
   def search
     @genre = Genre.find_by(name: params[:keyword])
-    @items = @genre.items.page
+    items = @genre.items
+    sale_items = items.where(sales_status: 0)
+    @items = sale_items.page
     render :index
   end
 
