@@ -3,7 +3,7 @@ class Admin::OrdersController < ApplicationController
 
     @order = Order.find(params[:id])
     @order_items = OrderItem.all
-    #@order_item = OrderItem.where(order_id: params[:id])
+    # @order_items = OrderItem.where(order_id: params[:id])
   end
 
   def update
