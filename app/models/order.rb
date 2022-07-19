@@ -24,12 +24,13 @@ class Order < ApplicationRecord
     order_item.purchace_price * order_item.amount
   end
 
+
   def ship_address
     "〒 #{post_code} #{address} #{to_name}"
   end
 
   enum order_status: {
-     "入金待ち":0, "入金確認":1, "製作中":2, "発送準備中":3, "発送済":4
+    wait_deposit: 0, payment_confirm: 1, production: 2, ship_preparation: 3, ship_completion: 4
   }
 
   enum payment_method: {
