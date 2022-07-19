@@ -24,13 +24,12 @@ class Order < ApplicationRecord
     order_item.purchace_price * order_item.amount
   end
   
+  
+  
+  
 
   def ship_address
-  '〒' + post_code + ' ' + address + ' ' + to_name
-  end
-  
-  def ordered_day
-    created_at.strftime("%Y-%m-%d")
+    "#{〒} #{post_code} #{address} #{to_name}"
   end
   
   
