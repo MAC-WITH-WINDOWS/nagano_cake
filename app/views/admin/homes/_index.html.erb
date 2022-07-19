@@ -16,9 +16,11 @@
         <td nowrap><%= order.customer.full_name %></td>
         <td nowrap>
           <% order.order_items.each do |ord_item|%>
-          <%#= OrderItem.where(id: ord_item.order.id).pluck(:amount).join %>
-          <%= (ord_item.amount).count %>
+          <%= ord_item.amount %>
+          <%#= OrderItem.pluck(:amount).sum %>
           
+          <%#= OrderItem.where(id: ord_item.order.id).pluck(:amount).join %>
+          <%#= OrderItem.sum(amount=nill,ord_item) %><!--モデル.sum(カラム名=nil, ブロック引数)-->
           <% end %>
         </td>
         <td nowrap><%= order.order_status_i18n %></td>
