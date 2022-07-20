@@ -1,48 +1,49 @@
-<%= stylesheet_link_tag "application", :media => "all" %>
 <div class="container">
   <div class="raw">
-
     <h4 class="mt-5">注文情報入力</h4>
-    <p>支払い方法</p>
+
     <%= form_with model: [:public,Order.new], url: public_orders_check_path, method: :post do |f| %>
+    <div class="col-md-4"><p style="margin:0;"><strong>支払方法</strong></p>
+    <div class="ml-3 mb-2">
       <%= f.radio_button :payment_method,0 %>
       <%= f.label :payment_method,"クレジットカード", value:0 %><br>
       <%= f.radio_button :payment_method,1 %>
       <%= f.label :payment_method,"銀行振込",value:1 %>
+    </div>
+    </div>
 
-    <p>お届け先</p>
-      <%= f.radio_button :select_address,0 %>
-      <%= f.label :select_address,"ご自身の住所", value:0 %>
-      <%=@customer.post_code + @customer.address + @customer.first_name + @customer.last_name %><br>
+    <div class="col-md-10">
+      <p style="margin:0;"><strong>お届け先</strong></p>
+      <div class="ml-3 mb-2">
+        <%= f.radio_button :select_address,0 %>
+        <%= f.label :select_address,"ご自身の住所", value:0 %>
+        <div class="ml-3">〒<%=@customer.post_code %>　<%=@customer.address %><br><%= @customer.last_name + @customer.first_name %></div>
 
-      <%= f.radio_button :select_address,1 %>
-      <%= f.label :select_address,"登録済み住所から選択", value:1 %>
-      <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :ship_address) %><br>
+        <%= f.radio_button :select_address,1 %>
+        <%= f.label :select_address,"登録済み住所から選択", value:1 %>
+        <div class="ml-3 mb-2"><%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :ship_address) %></div>
 
-      <%= f.radio_button :select_address,2 %>
-      <%= f.label :select_address,"新しいお届け先" %>
-      <table>
-        <tr>
-          <th>郵便番号(ハイフンなし)</th>
-          <td><%= f.text_field :post_code %></td>
-        </tr>
-        <tr>
-          <th>住所</th>
-          <td><%= f.text_field :address %></td>
-        </tr>
-        <tr>
-          <th>宛名</th>
-          <td><%= f.text_field :name %></td>
-        </tr>
-      </table>
-
-      <%= f.submit "確認画面へ進む", url: public_orders_check_path, method: :post ,class:"btn" %>
+        <%= f.radio_button :select_address,2 %>
+        <%= f.label :select_address,"新しいお届け先" %>
+        <table>
+          <tr>
+            <td>郵便番号(ハイフンなし)</td>
+            <td><%= f.text_field :post_code %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address ,:size=>"50"%></td>
+          </tr>
+          <tr>
+            <td>宛名</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="text-center">
+      <%= f.submit "確認画面へ進む", url: public_orders_check_path, method: :post , class:"btn btn-primary"%>
+    </div>
       <% end %>
-
-
-
-
-
-
   </div>
 </div>
