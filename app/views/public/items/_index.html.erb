@@ -3,7 +3,7 @@
         <div>
           <%= image_tag item.get_image(100,100) %><br>
           <%= link_to public_item_path(item) do %><%= item.name %><% end %><br>
-          <%= (item.tax_free_price * 1.1).round(0).to_s(:delimited) %>円
+          <%= item.tax_include_price.to_s(:delimited) %>円
         </div>
         <% end %>
       </div>
