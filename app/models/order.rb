@@ -23,6 +23,10 @@ class Order < ApplicationRecord
   def sum_of_price
     order_item.purchace_price * order_item.amount
   end
+  
+  def total_price
+    total_payment + 800
+  end
 
 
 
