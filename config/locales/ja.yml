@@ -18,3 +18,9 @@
           wait_product: "製作待ち"
           in_product: "製作中"
           finish_product: "製作完了"
+          
+
+    helpers:
+      submit:
+        create: 新規登録
+        update: 変更内容を保存

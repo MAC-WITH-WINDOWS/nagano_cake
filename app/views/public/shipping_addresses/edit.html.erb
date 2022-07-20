@@ -1,18 +1,4 @@
 <div class="container">
   <h3 class="mt-5 mb-4"><span class="bg-light px-4">配送先登録/一覧</span></h3>
-  <%= form_with model: [:public, @address] do |f| %>
-    <div class="row">
-      <%= f.label :post_code, "郵便番号(ハイフンなし)",class:"col-3" %>
-      <%= f.text_field :post_code ,autocomplete: "post_code", placeholder: "0000000", class:"col-3" %>
-    </div>
-    <div class="row my-3">
-      <%= f.label :address, "住所",class:"col-3" %>
-      <%= f.text_field :address ,autocomplete: "address", placeholder: "東京都渋谷区代々木神園町0-0", class:"col-6" %>
-    </div>
-    <div class="row">
-      <%= f.label :name, "宛名",class:"col-3" %>
-      <%= f.text_field :name ,autocomplete: "name", placeholder: "令和道子",class:"col-3" %>
-      <%= f.submit "変更内容を保存", class:"btn btn-success offset-1 px-4" %>
-    </div>
-  <% end %>
+  <%= render "public/shipping_addresses/form", address: @address %>
 </div>
