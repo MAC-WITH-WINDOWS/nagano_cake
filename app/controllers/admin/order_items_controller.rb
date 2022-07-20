@@ -12,7 +12,6 @@ class Admin::OrderItemsController < ApplicationController
       elsif @order_items.where(making_status: "finish_product").count == @order_items.count
          @order.update(order_status: "ship_preparation")
       end
-      
       flash[:notice] = "製作ステータスが更新されました"
       redirect_to request.referrer
   end
