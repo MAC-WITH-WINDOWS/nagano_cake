@@ -7,14 +7,6 @@ class Customer < ApplicationRecord
   has_many :shipping_addresses, dependent: :destroy
   has_many :orders, dependent: :destroy
   
-  validates :last_name ,presence:true
-  validates :first_name ,presence:true
-  validates :last_name_kana ,presence:true
-  validates :first_name_kana ,presence:true
-  validates :post_code,presence:true,length:{minimum: 7, maximum: 7}
-  validates :address ,presence:true
-  validates :phone_number,presence:true,length:{minimum: 10, maximum: 11}
-  
   def full_name
     "#{last_name} #{first_name}"
   end
@@ -22,6 +14,5 @@ class Customer < ApplicationRecord
   def full_name_kana
     "#{last_name_kana} #{first_name_kana}"
   end
-  
   
 end
