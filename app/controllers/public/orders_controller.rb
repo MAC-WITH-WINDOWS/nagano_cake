@@ -5,7 +5,7 @@ class Public::OrdersController < ApplicationController
 
   def check
     #binding.pry
-    #@order = Order.new(params[:select_address]),(order_params)
+   
     @order = Order.new(order_params)
     @order.customer_id=current_customer.id
     @adress=(params[:order][:select_address])
@@ -36,6 +36,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order=Order.find(params[:id])
+    @item=OrderItem.where(order_id:@order.id)
   end
 
   def create

@@ -14,14 +14,17 @@
           <th class="table-light">注文詳細</th>
         </tr>
         <% @order.each do |order| %>
-          <tr>
-            <% @item.each do |item| %>
-              <td colspan="3"></td>
-            <% end %>
-          </tr>
+
+        <tr>
+          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td colspan="3"><%= order.ship_address%></td>
+          <td><%@item.each do |item| %><% if item.order_id == order.id %><%= item.item.name %><br><% end %><% end %></td>
+          <td><%= order.total_payment + order.postage %></td>
+          <td><%= order.order_status_i18n %></td>
+          <td><%= link_to "表示する", public_order_path(order) %></td>
+        </tr>
         <% end %>
-
-
+      </table>
     </div>
   </div>
 </div>

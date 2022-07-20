@@ -13,5 +13,13 @@ class OrderItem < ApplicationRecord
   def subtotal
     tax_included_price*amount
   end
-  
+
+  def tax_include_price
+    (purchace_price*1.1).round(0)
+  end
+
+  def s_total
+    tax_include_price*amount
+  end
+
 end
