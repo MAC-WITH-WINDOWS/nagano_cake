@@ -6,6 +6,10 @@ class Order < ApplicationRecord
     order_item.purchace_price * order_item.amount
   end
 
+  def total_price
+    total_payment + 800
+  end
+
   def ship_address
     "〒 #{post_code} #{address} #{to_name}"
   end
@@ -15,7 +19,7 @@ class Order < ApplicationRecord
   }
 
   enum payment_method: {
-    "クレジットカード":"0", "銀行振込":"1"
+    credit_card: 0, transfer: 1
   }
 
 

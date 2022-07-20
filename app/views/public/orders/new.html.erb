@@ -3,12 +3,13 @@
     <h4 class="mt-5">注文情報入力</h4>
 
     <%= form_with model: [:public,Order.new], url: public_orders_check_path, method: :post do |f| %>
+
     <div class="col-md-4"><p style="margin:0;"><strong>支払方法</strong></p>
     <div class="ml-3 mb-2">
-      <%= f.radio_button :payment_method,0 %>
-      <%= f.label :payment_method,"クレジットカード", value:0 %><br>
-      <%= f.radio_button :payment_method,1 %>
-      <%= f.label :payment_method,"銀行振込",value:1 %>
+      <%= f.radio_button :payment_method, 'credit_card' %>
+      <%= f.label :payment_method,"クレジットカード", value:'credit_card' %><br>
+      <%= f.radio_button :payment_method, 'transfer' %>
+      <%= f.label :payment_method,"銀行振込",value:'transfer' %>
     </div>
     </div>
 
