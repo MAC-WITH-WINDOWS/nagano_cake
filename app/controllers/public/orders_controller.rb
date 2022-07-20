@@ -1,6 +1,7 @@
 class Public::OrdersController < ApplicationController
   def new
     @customer=current_customer
+    @s_address = ShippingAddress.where(customer_id: current_customer.id)
   end
 
   def check
