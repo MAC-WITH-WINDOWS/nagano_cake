@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  session:
+    signed_in: ""
