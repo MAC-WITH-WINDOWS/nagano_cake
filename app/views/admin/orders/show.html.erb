@@ -1,3 +1,4 @@
+
 <div class='container px-5 px-sm-0'>
   <div style ="color:green;"><%= flash[:notice] %></div>
   <div class='row'>
@@ -24,14 +25,14 @@
           <div class="mt-3"><strong>支払い方法</strong></div>
           <div class="mt-3 ml-5"><%= @order.payment_method_i18n %></div>
         </div>
-
-        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
         <div class='row'>
           <div class="mt-3"><strong>注文ステータス</strong></div>
+          <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
             <div class="mt-3 ml-5"><%= f.select :order_status, Order.order_statuses.keys.map {|k| [I18n.t("enums.order.order_status.#{k}"), k]}, class: "order_status" %></div>
             <div class="mt-3 ml-3 col-3"><%= f.submit "更新" , class: "btn btn-success" %></div>
+          <% end %>
         </div>
-        <% end %>
+        
     </div>
     </div>
     </div>
