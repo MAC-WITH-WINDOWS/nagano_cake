@@ -10,7 +10,7 @@
       <th></th>
     </tr>
   </thead>
-  
+
   <% @order_items.each do |order_item| %>
     <tbody>
       <tr>
@@ -18,10 +18,12 @@
         <td nowrap><%= order_item.tax_included_price.to_s(:delimited) %></td>
         <td nowrap><%= order_item.amount %></td>
         <td nowrap><%= order_item.subtotal.to_s(:delimited) %></td>
+        <td nowrap>
         <%= form_with model: order_item, url: admin_order_item_path(order_item.id), method: :patch, local: true do |f| %>
-        <td nowrap><%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, class: "making_status" %></td>
-        <td><%= f.submit "更新",class:"btn btn-success" %></td>
+        <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, class: "making_status" %>
+        <%= f.submit "更新",class:"btn btn-success" %>
         <% end %>
+        </td>
       </tr>
     </tbody>
   <% end %>
