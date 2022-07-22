@@ -10,10 +10,10 @@
         <%= @genre.name %>一覧
       <% end %>
     </h1>
-    (全<%=@items.count%>件)</strong>
+    (全<%=@sale_items.count%>件)</strong>
     <%= render "public/items/index", items: @items %>
+     <div class="mt-5"><%= paginate @items %></div>
     </div>
   </div>
 </div>
-<%= paginate @items %>
 
