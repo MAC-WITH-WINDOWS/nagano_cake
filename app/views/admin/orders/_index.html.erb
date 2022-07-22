@@ -20,13 +20,8 @@
         <td nowrap><%= order_item.subtotal.to_s(:delimited) %></td>
         <td nowrap>
         <%= form_with model: order_item, url: admin_order_item_path(order_item.id), method: :patch, local: true do |f| %>
-<<<<<<< HEAD
         <%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, class: "making_status" %>
         <%= f.submit "更新",class:"btn btn-success" %>
-=======
-        <td nowrap><%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [I18n.t("enums.order_item.making_status.#{k}"), k]}, class: "making_status" %>
-        <%= f.submit "更新",class:"btn btn-success" %></td>
->>>>>>> develop
         <% end %>
         </td>
       </tr>
