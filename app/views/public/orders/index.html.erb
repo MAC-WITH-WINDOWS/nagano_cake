@@ -1,0 +1,30 @@
+<%= stylesheet_link_tag "application", :media => "all" %>
+<div class="container">
+  <div class="top m-5">
+    <h3 class="bg-light bg-opacity-50" style="display:inline;">注文履歴一覧</h3>
+  </div>
+  <div class="row">
+      <table class="table table-bordered">
+        <tr>
+          <th class="table-light">注文日</th>
+          <th colspan="3" height="50" class="table-light">配送先</th>
+          <th class="table-light">注文商品</th>
+          <th class="table-light">支払い金額</th>
+          <th class="table-light">ステータス</th>
+          <th class="table-light">注文詳細</th>
+        </tr>
+        <% @order.each do |order| %>
+
+        <tr>
+          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td colspan="3"><%= order.ship_address%></td>
+          <td><%@item.each do |item| %><% if item.order_id == order.id %><%= item.item.name %><br><% end %><% end %></td>
+          <td><%= order.total_payment + order.postage %></td>
+          <td><%= order.order_status_i18n %></td>
+          <td><%= link_to "表示する", public_order_path(order) %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

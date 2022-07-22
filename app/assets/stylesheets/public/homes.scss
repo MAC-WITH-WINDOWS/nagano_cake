@@ -1,0 +1,29 @@
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.mainvisual {
+  height: 400px;
+  width: 100% ;
+  background-image: image-url('mv.jpg');
+  background-size: cover;
+  background-position:center;
+}
+
+.mainvisual-text {
+  background-color: #ffffff99;
+  padding-top: 15px;
+}
+
+.back {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}

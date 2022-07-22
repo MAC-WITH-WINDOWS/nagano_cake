@@ -1,0 +1,13 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class= "pt-5 ml-4 col-md-2 col-sm-6" style="font-size: 20px;">
+      <span style="background-color:gainsboro"><strong>　会員一覧　</strong></span>
+    </div>
+  </div>
+  <div class='row ml-5'>
+    <div class='pt-4 ml-3 col-md-2 col-sm-6'>
+      <%= render 'index', customers: @customers %>
+      <%= paginate @customers %>
+    </div>
+  </div>
+</div>

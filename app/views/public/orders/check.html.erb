@@ -1,0 +1,61 @@
+<div class="container">
+  <h2><span class="bg-light px-3">注文情報確認</span></h2>
+  <div class="row">
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <td><%= image_tag cart_item.item.get_image(50,50) %> <%= cart_item.item.name %></td>
+              <td><%= (cart_item.item.tax_free_price * 1.1).floor.to_s(:delimited) %></td>
+              <td><%= cart_item.amount %></td>
+              <td><%= ((cart_item.item.tax_free_price * 1.1).floor * (cart_item.amount)).to_s(:delimited) %></td>
+            </tr>
+            <% @total_price +=(cart_item.item.tax_free_price * 1.1).floor * (cart_item.amount) %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th>商品合計</th>
+          <td><%= @total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
+          <th>請求金額</th>
+          <td><%= (@total_price + 800).to_s(:delimited) %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <strong>支払方法</strong><%= @order.payment_method_i18n %>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <span><strong>お届け先</strong></span><%= @order.ship_address %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="w-100">
+  <!--以下入力フォームでhidden_fieldを使って全部の情報を送るとできると思う-->
+  <%= render "public/orders/hidden_form", order: @order  %>
+  </div>
+  </div>
+</div>

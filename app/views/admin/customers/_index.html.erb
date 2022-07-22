@@ -1,0 +1,29 @@
+<table class='table table-hover table-striped table-inverse'style="background-color:gainsboro;">
+  
+  <thead>
+    <tr>
+      <th nowrap>会員ID</th>
+      <th nowrap>氏名</th>
+      <th nowrap>メールアドレス</th>
+      <th nowrap>ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% customers.each do |customer| %>
+      <tr>
+        <td nowrap><%= customer.id %></td>
+        <td nowrap><u><%= link_to customer.full_name,admin_customer_path(customer.id),class: "text-dark"%></u></td>
+        <td nowrap><%= customer.email %></td>
+        <td>
+        <% if customer.is_deleted == false %>
+            <span class="text-success"><strong>有効</strong></span>
+        <% else %>
+            <span class="text-secondary"><strong>退会</strong></span>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+</table>

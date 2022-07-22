@@ -1,0 +1,25 @@
+ ja:
+    enums:
+      order:
+        order_status:
+          wait_deposit: "入金待ち"
+          payment_confirm: "入金確認"
+          production: "製作中"
+          ship_preparation: "発送準備中"
+          ship_completion: "発送済"
+
+        payment_method:
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
+
+      order_item:
+        making_status:
+          not_startable: "着手不可"
+          wait_product: "製作待ち"
+          in_product: "製作中"
+          finish_product: "製作完了"
+
+    helpers:
+      submit:
+        create: 新規登録
+        update: 変更内容を保存
